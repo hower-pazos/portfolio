@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hower Pazos | Computer Science Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --secondary: #8b5cf6;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --gray: #64748b;
+        --light-gray: #e2e8f0;
+        --accent: #ec4899;
+        --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.25);
+        animation: float 15s infinite ease-in-out;
+        z-index: -1;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(20px, 20px);
+        }
+        50% {
+          transform: translate(0, 40px);
+        }
+        75% {
+          transform: translate(-20px, 20px);
+        }
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-family: "Raleway", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        display: inline-block;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--gradient);
+        border-radius: 2px;
+      }
+
+      /* Header & Navigation */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-family: "Raleway", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--dark);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo span {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      #hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        color: white;
+        max-width: 800px;
+      }
+
+      .hero-content h1 {
+        font-family: "Raleway", sans-serif;
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .hero-content h1 span {
+        background: linear-gradient(to right, #4ade80, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 40px;
+        color: #cbd5e1;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: var(--gradient);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid white;
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* About Section */
+      #about {
+        background-color: white;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+      }
+
+      .about-text p {
+        margin-bottom: 15px;
+        color: var(--gray);
+      }
+
+      .about-image {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background: var(--gradient);
+        z-index: -1;
+        border-radius: 30px;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 20px;
+      }
+
+      /* Skills Section */
+      #skills {
+        background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-10px);
+      }
+
+      .skill-category h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+      }
+
+      .skill-category h3 i {
+        margin-right: 10px;
+        color: var(--primary);
+      }
+
+      .skill-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill-item {
+        background: var(--light-gray);
+        padding: 8px 15px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .skill-item:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Projects Section */
+      .projects-filter {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        background: white;
+        border: 2px solid var(--light-gray);
+        color: var(--gray);
+        padding: 8px 20px;
+        border-radius: 50px;
+        margin: 0 5px 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--gradient);
+        color: white;
+        border-color: transparent;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-img {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .project-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-card:hover .project-img img {
+        transform: scale(1.1);
+      }
+
+      .project-tag {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--primary);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .project-content {
+        padding: 25px;
+      }
+
+      .project-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .project-content p {
+        color: var(--gray);
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .tech-item {
+        background: var(--light-gray);
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .project-links a {
+        display: flex;
+        align-items: center;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .project-links a:hover {
+        color: var(--secondary);
+      }
+
+      .project-links a i {
+        margin-right: 5px;
+      }
+
+      /* Contact Section */
+      #contact {
+        background: linear-gradient(to bottom, #0f172a, #1e293b);
+        color: white;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+      }
+
+      .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .contact-info h3::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: var(--gradient);
+      }
+
+      .contact-info p {
+        color: #cbd5e1;
+        margin-bottom: 30px;
+        max-width: 400px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--gradient);
+        transform: translateY(-5px);
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+      }
+
+      .form-control:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* Footer */
+      footer {
+        background: #0f172a;
+        padding: 30px 0;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-logo {
+        font-family: "Raleway", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 25px;
+        margin: 20px 0;
+      }
+
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .copyright {
+        margin-top: 20px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+        .about-content,
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+        .about-image {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          background: white;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 30px 0;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          transition: left 0.3s ease;
+        }
+        .nav-links.active {
+          left: 0;
+        }
+        .nav-links li {
+          margin: 15px 0;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+        .btn {
+          display: block;
+          width: 100%;
+          margin-bottom: 15px;
+          text-align: center;
+        }
+        .btn-outline {
+          margin-left: 0;
+        }
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bubbles Background -->
+    <div id="bubbles-container"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <a href="#" class="logo">Hower Pazos</a>
+          <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hi There, I'm <span>Hower Pazos</span></h1>
+          <h2>
+            A Third-Year Computer Science Student at the University of Adelaide
+          </h2>
+          <p>
+            Passionate about problem-solving and technology, I build solutions
+            that automate processes, enhance user experiences, and turn data
+            into meaningful insights.
+          </p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn">View My Projects</a>
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>My Journey in Computer Science</h3>
+            <p>
+              There is nothing more important in my life than striving to become
+              the best version of myself while chasing my goals and ambitions.
+              My passion for problem-solving and technology led me to pursue a
+              Bachelor of Computer Science at the University of Adelaide, where
+              I developed strong programming skills in Python, C++, and
+              JavaScript.
+            </p>
+            <p>
+              Through hands-on experience in machine learning, web development,
+              and data analysis, I've built solutions that automate processes,
+              enhance user experiences, and turn data into meaningful insights.
+              From developing AI-driven tools to crafting full-stack
+              applications, I thrive on turning ideas into reality.
+            </p>
+            <p>
+              Beyond the technical side, I believe in consistency, adaptability,
+              and surrounding myself with ambitious, like-minded individuals.
+              Whether it's refining a machine learning model, designing an
+              intuitive user interface, or solving complex problems, I approach
+              every task with a growth mindset and a commitment to excellence.
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="images\profile_picture.jpg" alt="Hower Pazos" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Technologies & Tools</h2>
+        </div>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+            <div class="skill-items">
+              <span class="skill-item">C#</span>
+              <span class="skill-item">Python</span>
+              <span class="skill-item">JavaScript</span>
+              <span class="skill-item">SQL</span>
+              <span class="skill-item">C++</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-layer-group"></i> Full-Stack Development</h3>
+            <div class="skill-items">
+              <span class="skill-item">HTML/CSS</span>
+              <span class="skill-item">Flask</span>
+              <span class="skill-item">Streamlit</span>
+              <span class="skill-item">Express.js</span>
+              <span class="skill-item">FastAPI</span>
+              <span class="skill-item">React.js</span>
+              <span class="skill-item">Vue.js</span>
+              <span class="skill-item">Angular</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
+            <div class="skill-items">
+              <span class="skill-item">Power BI</span>
+              <span class="skill-item">Excel</span>
+              <span class="skill-item">Tableau</span>
+              <span class="skill-item">Plotly</span>
+              <span class="skill-item">Matplotlib</span>
+              <span class="skill-item">Seaborn</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-brain"></i> Data Science & ML</h3>
+            <div class="skill-items">
+              <span class="skill-item">Scikit-learn</span>
+              <span class="skill-item">TensorFlow</span>
+              <span class="skill-item">PyTorch</span>
+              <span class="skill-item">Pandas</span>
+              <span class="skill-item">NumPy</span>
+              <span class="skill-item">OpenCV</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+            <div class="skill-items">
+              <span class="skill-item">Azure</span>
+              <span class="skill-item">Snowflake</span>
+              <span class="skill-item">Docker</span>
+              <span class="skill-item">Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>My Projects</h2>
+        </div>
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web Apps</button>
+          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+          <!-- <button class="filter-btn" data-filter="data">Data Analysis</button> -->
+        </div>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card" data-category="web">
+            <div class="project-img">
+              <img
+                src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Caffiend"
+              />
+              <span class="project-tag">Web App</span>
+            </div>
+            <div class="project-content">
+              <h3>Caffiend: Coffee Tracker</h3>
+              <p>
+                A robust coffee consumption tracker built with React and
+                Firebase, providing real-time caffeine level monitoring and
+                personalized consumption statistics.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">React</span>
+                <span class="tech-item">Firebase</span>
+                <span class="tech-item">Context API</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/hower-pazos/Coffee-Tracker/tree/master"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://coffee-tracker-react.netlify.app/"
+                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card" data-category="web">
+            <div class="project-img">
+              <img
+                src="https://images.unsplash.com/photo-1542779283-429940ce8336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Pokedex"
+              />
+              <span class="project-tag">Web App</span>
+            </div>
+            <div class="project-content">
+              <h3>Pokédex React App</h3>
+              <p>
+                A modern and interactive Pokédex web application showcasing the
+                original 151 Pokémon with detailed information including stats,
+                types, and sprites.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">React</span>
+                <span class="tech-item">PokéAPI</span>
+                <span class="tech-item">CSS</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/hower-pazos/Pokedex"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://pokedex-react-app-0.netlify.app/"
+                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card" data-category="web">
+            <div class="project-img">
+              <img
+                src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                alt="Todo List"
+              />
+              <span class="project-tag">Web App</span>
+            </div>
+            <div class="project-content">
+              <h3>Todo List React App</h3>
+              <p>
+                A simple and intuitive todo list application with features like
+                adding, editing, completing, and deleting todos. Includes
+                tab-based filtering and local storage persistence.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">React</span>
+                <span class="tech-item">LocalStorage</span>
+                <span class="tech-item">CSS</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/hower-pazos/Todo-List-App"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://todo-list-react-app-hp.netlify.app/"
+                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card" data-category="web">
+            <div class="project-img">
+              <img
+                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Volunteer App"
+              />
+              <span class="project-tag">Web App</span>
+            </div>
+            <div class="project-content">
+              <h3>Volunteer Organisation Web App</h3>
+              <p>
+                A full-stack web application that connects volunteers with
+                organizations and manages volunteer activities. Built with
+                Node.js, Express.js, and MySQL.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express.js</span>
+                <span class="tech-item">MySQL</span>
+                <span class="tech-item">Docker</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/hower-pazos/Volunteer-Organisation-Web-App"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project-card" data-category="ml">
+            <div class="project-img">
+              <img
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80"
+                alt="Heart Disease Predictor"
+              />
+              <span class="project-tag">Machine Learning</span>
+            </div>
+            <div class="project-content">
+              <h3>Heart Disease Risk Predictor</h3>
+              <p>
+                A machine learning model that predicts the risk of heart disease
+                based on various health parameters. Built using Scikit-learn and
+                deployed as a web application.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Scikit-learn</span>
+                <span class="tech-item">Flask</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/hower-pazos/Heart-Disease-Risk-Predictor"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-card" data-category="ml">
+            <div class="project-img">
+              <img
+                src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Sentiment Analysis"
+              />
+              <span class="project-tag">Machine Learning</span>
+            </div>
+            <div class="project-content">
+              <h3>Movie Review Sentiment Classifier</h3>
+              <p>
+                A natural language processing model that classifies movie
+                reviews as positive or negative. Built using TensorFlow and
+                deployed as a web application.
+              </p>
+              <div class="project-tech">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">NLP</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/hower-pazos/Movie-Review-Sentiment-Classifier"><i class="fab fa-github"></i> GitHub</a>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>
+              I am always eager to connect with other professionals and explore
+              how I can contribute to innovative and transformative projects. If
+              you're working on exciting technology initiatives, let's discuss
+              how my experience and expertise can help your organization achieve
+              its goals.
+            </p>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/hower-pazos/" target="_blank"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="https://github.com/hower-pazos" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <input
+                type="hidden"
+                name="access_key"
+                value="dda342ce-09c2-4d61-b098-51e91fbd6a5c"
+              />
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="Your Name"
+              />
+
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-control"
+                placeholder="Your Email"
+              />
+
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                placeholder="Your Message"
+              ></textarea>
+              <!-- Honeypot Spam Protection -->
+              <input
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                style="display: none"
+              />
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">Hower Pazos</div>
+          <div class="footer-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="copyright">
+            &copy; 2023 Hower Pazos. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Create bubbles for background
+      function createBubbles() {
+        const bubblesContainer = document.getElementById("bubbles-container");
+        const bubbleCount = 15;
+
+        for (let i = 0; i < bubbleCount; i++) {
+          const bubble = document.createElement("div");
+          bubble.classList.add("bubble");
+
+          // Random size
+          const size = Math.random() * 100 + 20; // Between 20px and 120px
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+
+          // Random position
+          const posX = Math.random() * 100;
+          const posY = Math.random() * 100;
+          bubble.style.left = `${posX}%`;
+          bubble.style.top = `${posY}%`;
+
+          // Random animation duration and delay
+          const duration = Math.random() * 20 + 10; // Between 10s and 30s
+          bubble.style.animationDuration = `${duration}s`;
+
+          bubblesContainer.appendChild(bubble);
+        }
+      }
+
+      // Header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile menu toggle
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const navLinks = document.querySelector(".nav-links");
+
+      mobileMenu.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+      });
+
+      // Project filtering
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Remove active class from all buttons
+          filterBtns.forEach((b) => b.classList.remove("active"));
+
+          // Add active class to clicked button
+          this.classList.add("active");
+
+          const filter = this.getAttribute("data-filter");
+
+          // Show/hide projects based on filter
+          projectCards.forEach((card) => {
+            if (
+              filter === "all" ||
+              card.getAttribute("data-category") === filter
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        createBubbles();
+      });
+    </script>
+  </body>
+</html>
